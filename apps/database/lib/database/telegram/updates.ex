@@ -5,6 +5,8 @@ defmodule Database.Telegram.Updates do
 
   schema "telegram_updates" do
     field :update, :map
+
+    timestamps()
   end
 
   @doc false
