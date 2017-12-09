@@ -33,9 +33,13 @@ defmodule TelegramBot do
   end
 
   defp save_to_db([last]) do
+    update = %{update: Map.from_struct(last)}
+    Database.Telegram.create_telegram_update(update)
     last.update_id
   end
   defp save_to_db([first | rest]) do
+    update = %{update: Map.from_struct(first)}
+    Database.Telegram.create_telegram_update(update)
     save_to_db(rest)
   end
   defp save_to_db(_), do: nil
